@@ -1,20 +1,29 @@
 const fs =require ('fs')
 const path = require('path');
 
-const users =["Ada","Damian"]
+let users =["Ada","Greta","Vim","Tim"]
 
 function  adminMiddleware(req,res,next){
-     
-   for (let i = 0; i < users.length; i++) {
-    if(req.params === users[i]) {
-        return res.send('hola admin: ' + req.parms)
-      }else{
-       return res.send('no existe el usuario')
-      }
-   
- }
-  
- next()
+    let todoloqueintentamosfalloyporesorecurrimosaestoyaqueesimposibleencontrarlelalogica = 0
+    if(req.query.usuario !==undefined){
+                users.forEach(usuario => {
+                
+                        if(req.query.usuario === usuario){
+                        res.send("Hola Admin " + req.query.usuario)
+                    }
+                    else{
+                        todoloqueintentamosfalloyporesorecurrimosaestoyaqueesimposibleencontrarlelalogica = todoloqueintentamosfalloyporesorecurrimosaestoyaqueesimposibleencontrarlelalogica + 1
+                    }
+                    
+                });}  
+    if(todoloqueintentamosfalloyporesorecurrimosaestoyaqueesimposibleencontrarlelalogica >0){
+        console.log(todoloqueintentamosfalloyporesorecurrimosaestoyaqueesimposibleencontrarlelalogica)
+        res.send("No tengo los permisos")
+    }
+
+ 
+
+    next()
 }
 
 module.exports=adminMiddleware;

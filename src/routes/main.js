@@ -9,8 +9,8 @@ const {user,admin} = require('../controllers/mainController');
 
 router.get('/services', user); 
 router.get('/services/design', user); 
-router.get('/', user); 
-router.get('/admin/:user', adminMiddleware , admin); 
+router.get('/', admin); 
+router.get('/admin',adminMiddleware, user);
 
 
 

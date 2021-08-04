@@ -3,7 +3,7 @@ const path = require('path');
 
 const controller = {
 	user:  (req, res) => {
-		return  res.render('index',{
+		return  res.render('logearse',{
 			
 		})
 	},
